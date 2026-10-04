@@ -97,15 +97,6 @@ The weights file, [dcs_denoiser/weights/dcs_lstm_denoiser_v1.pt](dcs_denoiser/we
 
 If you want the network itself rather than the wrapper, it is `dcs_denoiser.Generalised_LSTMDenoiser`, a standard `torch.nn.Module`. Its docstring describes the raw tensor inputs, and `dcs_denoiser.normalise_taus` builds the lag-time channel.
 
-### Provenance
-
-| | |
-|---|---|
-| Training run | `run_04_seed1982049089` |
-| SHA-256 of the original training checkpoint | `56a10ee1dbd924ffecac79d4853f44f7ac143e93a86a6078b032bee77c1a0e98` |
-| SHA-256 of the packaged weights file | `9ba7c4eac1c4b4224d65bf8f415b2d8b4fbf5c42511bfc86467a95849f5f780d` |
-
-The packaged file was produced from the training checkpoint with [scripts/package_weights.py](scripts/package_weights.py).
 
 ## Checking your installation
 
@@ -124,7 +115,7 @@ If you use this model or code, please cite it.
 <!-- TODO: replace with the paper reference once it is available, and update CITATION.cff to match. -->
 
 ```
-Fry, B. dcs-denoiser: an LSTM denoiser for diffuse correlation spectroscopy (version 1.0.0). 2026.
+Fry, B., Mesquita, R,. C., dcs-denoiser: an LSTM denoiser for diffuse correlation spectroscopy (version 1.0.0). 2026.
 https://github.com/BenFry199/CW-DCS-Denoiser
 ```
 
