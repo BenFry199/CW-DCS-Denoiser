@@ -62,7 +62,7 @@ A float64 NumPy array with the same shape as `g2`.
 
 ### Behaviour to be aware of
 
-- **Units.** `taus` must be in seconds. If lag times fall outside the range the model was trained on, a warning is raised; passing microseconds is the usual cause.
+- **Units.** `taus` must be in seconds. If lag times fall outside the range the model was trained on, a warning is raised.
 - **Zero lag.** A `tau = 0` bin (or any non-positive lag) cannot be log-normalised. It is not shown to the network and is returned unchanged.
 - **Non-finite curves.** A curve containing NaN or inf is returned unchanged.
 - **Output floor.** The output is always ≥ 1, because the network predicts `g2 − 1` through a softplus.
