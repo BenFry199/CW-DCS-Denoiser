@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dcs-denoiser"
+version = "1.0.0"
+description = "LSTM denoiser for diffuse correlation spectroscopy (DCS) g2(tau) curves"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT (code); CC BY 4.0 (model weights)" }
+authors = [{ name = "Ben Fry" }]
+dependencies = [
+    "numpy",
+    "torch>=2.0",
+]
+
+[project.optional-dependencies]
+examples = ["matplotlib", "jupyter"]
+test = ["pytest"]
+
+[tool.setuptools]
+packages = ["dcs_denoiser"]
+
+[tool.setuptools.package-data]
+dcs_denoiser = ["weights/*.pt"]

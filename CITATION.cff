@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this model or code, please cite it as below."
+title: "dcs-denoiser: an LSTM denoiser for diffuse correlation spectroscopy"
+type: software
+version: 1.0.0
+date-released: 2026-10-04
+license: MIT
+authors:
+  - family-names: Fry
+    given-names: Ben
+    affiliation: University of Birmingham
+repository-code: "https://github.com/BenFry199/CW-DCS-Denoiser"
+# TODO: add co-authors and (once minted) the Zenodo DOI.
+# doi: 10.5281/zenodo.XXXXXXX
+#
+# TODO: once the paper is published, uncomment and fill in so that GitHub's
+# "Cite this repository" button points at the paper.
+# preferred-citation:
+#   type: article
+#   title: ""
+#   authors:
+#     - family-names: Fry
+#       given-names: Ben
+#   journal: ""
+#   year: 2026
+#   doi: ""
