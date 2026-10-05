@@ -2,7 +2,7 @@
 
 A trained neural network that denoises diffuse correlation spectroscopy (DCS) intensity autocorrelation curves, g2(τ).
 
-You give it noisy g2 curves and their lag times; it returns denoised g2 curves of the same shape. The lag-time grid is an input to the network, so one model works across source-detector separations and correlator τ schemes.
+You give it noisy g2 curves and their lag times; it returns denoised g2 curves of the same shape. The lag-time grid is an input to the network, so one model works across correlator schemes.
 
 ```python
 from dcs_denoiser import load_denoiser
