@@ -78,9 +78,6 @@ denoiser = load_denoiser(device="cpu")     # or "cuda", "cuda:1", ...
 
 The model was trained on lag times from 5×10⁻⁸ s to 5 s. Outside that range it is extrapolating.
 
-<!-- TODO: fill in the training distribution from the paper, so users can judge whether their data are in range:
-     source-detector separations, mua and musp ranges, beta range, aDb range, noise model and noise levels,
-     and whether training curves were homogeneous or layered. -->
 
 ## Model
 
@@ -115,7 +112,7 @@ If you use this model or code, please cite it.
 <!-- TODO: replace with the paper reference once it is available, and update CITATION.cff to match. -->
 
 ```
-Fry, B., Mesquita, R,. C., dcs-denoiser: an LSTM denoiser for diffuse correlation spectroscopy (version 1.0.0). 2026.
+Fry, B., dcs-denoiser: an LSTM denoiser for diffuse correlation spectroscopy (version 1.0.0). 2026.
 https://github.com/BenFry199/CW-DCS-Denoiser
 ```
 
@@ -125,5 +122,7 @@ A paper describing the model is in preparation. Once it is published, please cit
 
 - **Code** is released under the [MIT Licence](LICENSE). Copies and substantial portions must keep the copyright notice.
 - **Model weights** (`dcs_denoiser/weights/`) are released under [Creative Commons Attribution 4.0 International](LICENSE-WEIGHTS) (CC BY 4.0). You may use, share and adapt them, including commercially, provided you give credit: name the author, link to this repository and the licence, cite the work as given under [Citation](#citation), and say if you changed the weights.
+
+
 
 Copyright © 2026 Ben Fry.
