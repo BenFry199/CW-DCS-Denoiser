@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dcs-denoiser"
-version = "1.0.0"
+version = "2.0.0"
 description = "LSTM denoiser for diffuse correlation spectroscopy (DCS) g2(tau) curves"
 readme = "README.md"
 requires-python = ">=3.9"

@@ -21,7 +21,7 @@ import torch
 from .model import Generalised_LSTMDenoiser
 
 WEIGHTS_DIR = Path(__file__).parent / "weights"
-DEFAULT_WEIGHTS = WEIGHTS_DIR / "dcs_lstm_denoiser_v1.pt"
+DEFAULT_WEIGHTS = WEIGHTS_DIR / "dcs_lstm_denoiser_v2.pt"   # v1 (beta 0.40-0.55) is kept alongside it
 
 
 def normalise_taus(real_taus, taus_min, taus_max, low=0.1, high=1.0, eps=1e-12):

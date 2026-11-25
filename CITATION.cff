@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If you use this model or code, please cite it as below."
 title: "dcs-denoiser: an LSTM denoiser for diffuse correlation spectroscopy"
 type: software
-version: 1.0.0
-date-released: 2026-10-04
+version: 2.0.0
+date-released: 2026-11-24
 license: MIT
 authors:
   - family-names: Fry

@@ -13,11 +13,13 @@ g2_clean = denoiser.denoise(g2, taus)   # g2: (..., n_tau), taus: (n_tau,) in se
 
 ## Installation
 
-Requires Python 3.9 or later, NumPy and PyTorch 2.0 or later. The model weights (about 3 MB) are included in the package.
+Requires Python 3.9 or later, NumPy and PyTorch 2.0 or later. The model weights (about 3 MB per version) are included in the package.
 
 ```bash
 pip install git+https://github.com/BenFry199/CW-DCS-Denoiser.git
 ```
+
+This installs the current version, 2.0.0. To install a specific version, add its tag, for example `...CW-DCS-Denoiser.git@v1.0.0` (see [Model versions](#model-versions)).
 
 Or, to also run the examples and tests, clone the repository and install it in editable mode:
 
@@ -76,7 +78,32 @@ denoiser = load_denoiser(device="cpu")     # or "cuda", "cuda:1", ...
 
 ## Valid range
 
-The model was trained on lag times from 5×10⁻⁸ s to 5 s. Outside that range it is extrapolating.
+| Parameter | Training range |
+|---|---|
+| β | 0.1 to 1.0 (v1.0.0: 0.40 to 0.55) |
+| Lag time | 5×10⁻⁸ s to 5 s |
+| Intensity | 5 to 250 kcps |
+| Integration time | 0.01 to 4 s |
+
+Outside these ranges the model is extrapolating. Only the lag-time range is checked (with a warning); the others cannot be inferred from the curves.
+
+## Model versions
+
+| Version | Weights file | Training β range | Status |
+|---|---|---|---|
+| 2.0.0 | `dcs_lstm_denoiser_v2.pt` | 0.1 to 1.0 | Current; loaded by default |
+| 1.0.0 | `dcs_lstm_denoiser_v1.pt` | 0.40 to 0.55 | Previous; install with `@v1.0.0` |
+
+Both weight files are bundled. The architecture, lag-time normalisation, training curves and interface are the same; only the β range of the training data differs. To use the v1 weights from this version:
+
+```python
+from dcs_denoiser import load_denoiser
+from dcs_denoiser.inference import WEIGHTS_DIR
+
+denoiser_v1 = load_denoiser(weights=WEIGHTS_DIR / "dcs_lstm_denoiser_v1.pt")
+```
+
+Denoised curves differ between versions. Record the version you used (`dcs_denoiser.__version__`) and do not combine outputs of different versions in one analysis.
 
 
 ## Model
@@ -90,7 +117,7 @@ The model was trained on lag times from 5×10⁻⁸ s to 5 s. Outside that range
 | Parameters | 745,153 |
 | Lag-time normalisation | `log10(τ)` min-max scaled with bounds [-7.30091, 0.69885], mapped to [0.1, 1.0] |
 
-The weights file, [dcs_denoiser/weights/dcs_lstm_denoiser_v1.pt](dcs_denoiser/weights/dcs_lstm_denoiser_v1.pt), holds the network weights, the architecture and the lag-time normalisation constants together. `load_denoiser` reads all three, so the model cannot be paired with the wrong normalisation.
+The weights file, [dcs_denoiser/weights/dcs_lstm_denoiser_v2.pt](dcs_denoiser/weights/dcs_lstm_denoiser_v2.pt) (and its v1 counterpart), holds the network weights, the architecture and the lag-time normalisation constants together. `load_denoiser` reads all three, so the model cannot be paired with the wrong normalisation.
 
 If you want the network itself rather than the wrapper, it is `dcs_denoiser.Generalised_LSTMDenoiser`, a standard `torch.nn.Module`. Its docstring describes the raw tensor inputs, and `dcs_denoiser.normalise_taus` builds the lag-time channel.
 
@@ -107,12 +134,12 @@ Without pytest: `python tests/test_reference.py`.
 
 ## Citation
 
-If you use this model or code, please cite it.
+If you use this model or code, please cite it, including the version number.
 
 <!-- TODO: replace with the paper reference once it is available, and update CITATION.cff to match. -->
 
 ```
-Fry, B., dcs-denoiser: an LSTM denoiser for diffuse correlation spectroscopy (version 1.0.0). 2026.
+Fry, B., dcs-denoiser: an LSTM denoiser for diffuse correlation spectroscopy (version 2.0.0). 2026.
 https://github.com/BenFry199/CW-DCS-Denoiser
 ```
 
